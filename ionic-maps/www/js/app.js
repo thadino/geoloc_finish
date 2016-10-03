@@ -126,16 +126,16 @@ google.maps.event.addListenerOnce($scope.map, 'idle', function(){
     console.log("1: " + user.userName);
     console.log("2: " + user.distance);
     user.loc = {type: "Point", coordinates: []}; //GeoJSON point
-    user.loc.coordinates.push(12.511813); //Observe that longitude comes first
-    user.loc.coordinates.push(55.770319); //in GEoJSON
+    user.loc.coordinates.push(12.611700); //Observe that longitude comes first
+    user.loc.coordinates.push(55.770338); //in GEoJSON
     // {"userName":"Donald Duck","loc": { "type": "Point","coordinates": [12.511813,55.770319]}}
-    console.log(JSON.stringify(user));
     $http({
       method: "POST",
-      url: " http://ionicboth-plaul.rhcloud.com/api/friends/register/"+user.distance,
+      url: "http://geoloc-pagh.rhcloud.com/api/friends/register/"+user.distance,
       data: user
     }).success(function (data, status, headers, config) {
 
+      console.log("i have posted");
       // for (var key in data) {
       //   if(data[key].loc)
       //   {
@@ -163,7 +163,7 @@ google.maps.event.addListenerOnce($scope.map, 'idle', function(){
 
 
   function newmarker(data){
-console.log(data);
+console.log("Data i recieved from server : " + data);
 console.log(data.loc.coordinates[1]);
     var posi = new google.maps.LatLng(data.loc.coordinates[1], data.loc.coordinates[0]);
 
